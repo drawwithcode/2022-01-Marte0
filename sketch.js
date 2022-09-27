@@ -1,5 +1,5 @@
 // click on the screen to create an abstract art piece based on Moving Squares by Bridget Riley.
-// the shrinked part is located when you clicked (it isn't if you click too close to the left edge of the window)
+// the shrinked part is located when you clicked 
 
 
 
@@ -12,6 +12,7 @@ let nloop = 0;
 let countRestore = 0; 
 let enlarge = false;
 let click = false; // make sure that the instructions in the mouseClicked function are executed only the first time you click the screen
+let shrinkAdjust = false;
 
 let shrinkX = 0 ; //the center of the square shrinking
 
@@ -30,10 +31,12 @@ function setup() { //setting up a white canvas having with the same size of the 
 function mouseClicked(){
     if(!click){
         background("white");
-
-        loop() // the draw function starts when the mouse is clicked
         shrinkX = mouseX; // save the mouse position when clicked
+        loop() // the draw function starts when the mouse is clicked
+        
         console.log("shrinkX---,",shrinkX)
+
+        console.log("offset shrink", )
     }
 }
 function draw() {
@@ -44,9 +47,15 @@ function draw() {
     fill(0); 
 
     if (frameCount > shrinkX/2 - map(140, 0, 866, 0,windowHeight)  && !enlarge){ // where to start the shrinking process, making x = shrinkX, be the centre of the shrinking (I use the map function because shifting the shrinked part by 140 if the height is 866 works, and the map function allaw me to make a proportion)
+        
+        if(shrinkX/2  < map(140, 0, 866, 0,windowHeight) && !shrinkAdjust){ // this if() make the shrink be where you click even if is too close to the window left edge
+          w -= 0.5* (map(140, 0, 866, 0,windowHeight) - shrinkX/2 )
+          shrinkAdjust = true;
+        }
+
         w -= 0.5;
         if (w <= 1 ) 
-            enlarge = true;
+        enlarge = true;
     }
         
     if(enlarge && w <= h) // when w reach 1 the shringking process ends and the enlarging process begin, but it ends when w reach the h value, making the lines return to create squares 
