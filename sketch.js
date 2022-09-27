@@ -18,6 +18,9 @@ let shrinkX = 0 ; //the center of the square shrinking
 function setup() { //setting up a white canvas having with the same size of the window
   createCanvas(windowWidth, windowHeight);
   background("white");
+  textSize(32);
+  textAlign(CENTER);
+  text('click anywhere', windowWidth/2, windowHeight/2);
 
   h = height/12; // setting the height of each square
   w = h; // setting the initial width of th each square
@@ -26,6 +29,7 @@ function setup() { //setting up a white canvas having with the same size of the 
 
 function mouseClicked(){
     if(!click){
+        background("white");
 
         loop() // the draw function starts when the mouse is clicked
         shrinkX = mouseX; // save the mouse position when clicked
