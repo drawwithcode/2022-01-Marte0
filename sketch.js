@@ -55,7 +55,7 @@ function draw() {
         }
 
         w -= 0.5;
-        if (w <= 1 ) 
+        if (w <= 2 ) 
         enlarge = true;
     }
         
@@ -85,9 +85,10 @@ function draw() {
     }
   } 
   
-  if(frameCount*2 - 2 >= windowWidth){
+  if(frameCount*2 - 2 >= windowWidth){ // stop looping when the drawing reach the right edge of the window
     noLoop();
     console.log("fin");
+    //saveCanvas('cover');
 
   }
     
