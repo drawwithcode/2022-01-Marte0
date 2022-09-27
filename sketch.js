@@ -73,7 +73,7 @@ function draw() {
       countRestore += w;
     }
              
-    translate((frameCount-2)*2,translationY); // shift the column of narrow rectangles as the framecount rise, when the square is drawn shift up or the rectangles line 
+    translate((frameCount-2)*4,translationY); // shift the column of narrow rectangles as the framecount rise, when the square is drawn shift up or the rectangles line 
     while(yStart < windowHeight + h){ //draw the column of narrow rectangles
 
       rect(0,yStart,2,h);
